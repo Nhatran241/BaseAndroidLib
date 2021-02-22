@@ -1,0 +1,3 @@
+include ':ezlib'
+include ':app'
+rootProject.name = "EzSample"
