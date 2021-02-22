@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#63ace5</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="server_list_bg">#63ace5</color>
+    <color name="connection_report_disconnect">#fe8a71</color>
+    <color name="connection_report_download">#ee4035 </color>
+    <color name="connection_report_upload">#64DD17</color>
+    <color name="server_list_status_green">#64DD17</color>
+    <color name="connection_report_text">#4a4e4d</color>
+</resources>

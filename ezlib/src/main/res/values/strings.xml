@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Vipn - Free Unlimited Vpn</string>
+    <string name="connection_failed">Failed to connect to server. Try another server</string>
+
+    <string name="server_list_title">Select Server</string>
+    <string name="main_select_server">Tap To Select Server</string>
+    <string name="main_connecting">Connecting</string>
+    <string name="main_connected">Your Connection Is Secure</string>
+    <string name="report_recent_traffic_in">Traffic In</string>
+    <string name="report_recent_traffic_out">Traffic Out</string>
+    <string name="title_connection_report_server_name">Server Name :</string>
+    <string name="title_connection_report_server_ip">Server Ip :</string>
+    <string name="title_connection_report_disconnect">Disconnect</string>
+    <string name="title_connection_report_duration">Duration :</string>
+
+    <string name="title_connection_report_download_speed">Download :</string>
+    <string name="title_connection_report_upload_speed">Upload :</string>
+    <string name="title_connection_report_download_total">Total Download :</string>
+    <string name="title_connection_report_upload_total">Total Upload :</string>
+
+
+    <string name="main_fastest_server">Fastest Server</string>
+    <string name="main_server_list">Server List</string>
+
+    <string name="error_internet">Something when wrong . Please check your internet connection and try again !</string>
+    <string name="error_no_server">Server not available !</string>
+    <string name="policy">Policy</string>
+    <string name="rate">Rate</string>
+    <string name="share">Share</string>
+    <string name="information">Information</string>
+</resources>

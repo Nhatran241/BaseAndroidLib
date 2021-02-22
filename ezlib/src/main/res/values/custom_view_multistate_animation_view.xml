@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MultiStateAnimationView">
+        //DRAWABLE
+        <attr name="mav_readyDrawable" format="reference"/>
+        <attr name="mav_loadingDrawable" format="reference"/>
+        <attr name="mav_loadedDrawable" format="reference"/>
+        //LOOP
+        <attr name="mav_readyLoop" format="boolean"/>
+        <attr name="mav_loadingLoop" format="boolean"/>
+        <attr name="mav_loadedLoop" format="boolean"/>
+        //MIN MAX FRAME
+        <attr name="mav_readyMinMaxFrameAfterFirstLoop" format="boolean"/>
+        <attr name="mav_loadingMinMaxFrameAfterFirstLoop" format="boolean"/>
+        <attr name="mav_loadedMinMaxFrameAfterFirstLoop" format="boolean"/>
+        <attr name="mav_readyMinFrame" format="integer"/>
+        <attr name="mav_readyMaxFrame" format="integer"/>
+        <attr name="mav_loadingMinFrame" format="integer"/>
+        <attr name="mav_loadingMaxFrame" format="integer"/>
+        <attr name="mav_loadedMinFrame" format="integer"/>
+        <attr name="mav_loadedMaxFrame" format="integer"/>
+        //SHADOW
+        <attr name="mav_elevation" format="dimension"/>
+        <attr name="mav_cornerRadius" format="dimension"/>
+        <attr name="mav_maxElevation" format="dimension"/>
+        <attr name="mav_shadowOnReady" format="boolean"/>
+        <attr name="mav_shadowOnLoading" format="boolean"/>
+        <attr name="mav_shadowOnLoaded" format="boolean"/>
+        //PLAY ON CLICK
+        <attr name="mav_readyAutoPlay" format="boolean"/>
+        <attr name="mav_loadingAutoPlay" format="boolean"/>
+        <attr name="mav_loadedAutoPlay" format="boolean"/>
+
+    </declare-styleable>
+</resources>
