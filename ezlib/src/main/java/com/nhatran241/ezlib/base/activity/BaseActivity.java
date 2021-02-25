@@ -99,11 +99,17 @@ public abstract class BaseActivity<T extends BaseViewModel> extends AppCompatAct
         }
     }
 
-    protected abstract void onMessageDialogNegativeClick(String title);
+    protected void onMessageDialogNegativeClick(String title) {
 
-    protected abstract void onMessageDialogPositiveClick(String title);
+    }
 
-    protected abstract void onMessageDialogNeutralClick(String title);
+    protected void onMessageDialogPositiveClick(String title) {
+
+    }
+
+    protected void onMessageDialogNeutralClick(String title) {
+
+    }
 
     @Override
     protected void onPause() {
