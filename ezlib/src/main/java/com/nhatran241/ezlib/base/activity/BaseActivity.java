@@ -50,6 +50,7 @@ public abstract class BaseActivity<T extends BaseViewModel> extends AppCompatAct
         }
         if(broadcastReceiverList.get(broadcastTag) != null){
             unregisterReceiver(broadcastReceiverList.get(broadcastTag));
+            broadcastReceiverList.remove(broadcastTag);
         }
     }
 
@@ -179,6 +180,8 @@ public abstract class BaseActivity<T extends BaseViewModel> extends AppCompatAct
             for(Map.Entry<String, BroadcastReceiver> entry : broadcastReceiverList.entrySet()) {
                 unregisterReceiver(entry.getValue());
             }
+            broadcastReceiverList.clear();
+            broadcastReceiverList = null;
         }
     }
 
