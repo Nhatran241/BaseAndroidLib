@@ -1,6 +1,10 @@
 package com.nhatran241.ezlib.base.activity;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -14,11 +18,43 @@ import com.nhatran241.ezlib.base.BaseViewModel;
 import com.nhatran241.ezlib.base.fragment.BaseFragment;
 import com.nhatran241.ezlib.custom.dialog.LoadingDialog;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 public abstract class BaseActivity<T extends BaseViewModel> extends AppCompatActivity {
     private LoadingDialog loadingDialog;
     private AlertDialog alertDialog;
     private T baseViewModel;
+    private Map<String, BroadcastReceiver> broadcastReceiverList;
+
+    public void registerBroadcast(String broadcastTag, IntentFilter intentFilter) {
+        if(broadcastReceiverList == null){
+            broadcastReceiverList = new HashMap<>();
+        }
+        if(broadcastReceiverList.get(broadcastTag) != null){
+            unregisterReceiver(broadcastReceiverList.get(broadcastTag));
+        }
+        BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                onBroadcastReceiver(intent, broadcastTag);
+            }
+        };
+        broadcastReceiverList.put(broadcastTag, broadcastReceiver);
+        registerReceiver(broadcastReceiver, intentFilter);
+    }
+    public void unregisterBroadcast(String broadcastTag){
+        if(broadcastReceiverList == null){
+            return;
+        }
+        if(broadcastReceiverList.get(broadcastTag) != null){
+            unregisterReceiver(broadcastReceiverList.get(broadcastTag));
+        }
+    }
+
+    private void onBroadcastReceiver(Intent intent, String broadcastTag) {
+    }
 
     public void showLoading(boolean hidePercentView) {
         if (loadingDialog == null) {
@@ -138,6 +174,11 @@ public abstract class BaseActivity<T extends BaseViewModel> extends AppCompatAct
         if (alertDialog != null) {
             alertDialog.cancel();
             alertDialog = null;
+        }
+        if(broadcastReceiverList != null){
+            for(Map.Entry<String, BroadcastReceiver> entry : broadcastReceiverList.entrySet()) {
+                unregisterReceiver(entry.getValue());
+            }
         }
     }
 
