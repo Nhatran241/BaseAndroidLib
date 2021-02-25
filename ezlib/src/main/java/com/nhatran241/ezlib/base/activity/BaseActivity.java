@@ -54,7 +54,7 @@ public abstract class BaseActivity<T extends BaseViewModel> extends AppCompatAct
         }
     }
 
-    private void onBroadcastReceiver(Intent intent, String broadcastTag) {
+    public void onBroadcastReceiver(Intent intent, String broadcastTag) {
     }
 
     public void showLoading(boolean hidePercentView) {
