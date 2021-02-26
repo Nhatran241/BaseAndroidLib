@@ -28,11 +28,21 @@ public abstract class BaseActivity<T extends BaseViewModel> extends AppCompatAct
     private T baseViewModel;
     private Map<String, BroadcastReceiver> broadcastReceiverList;
 
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        baseViewModel = initViewModel();
+        setContentView(getLayout());
+        initUI();
+        initData();
+
+    }
+
     public void registerBroadcast(String broadcastTag, IntentFilter intentFilter) {
-        if(broadcastReceiverList == null){
+        if (broadcastReceiverList == null) {
             broadcastReceiverList = new HashMap<>();
         }
-        if(broadcastReceiverList.get(broadcastTag) != null){
+        if (broadcastReceiverList.get(broadcastTag) != null) {
             unregisterReceiver(broadcastReceiverList.get(broadcastTag));
         }
         BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
@@ -44,11 +54,12 @@ public abstract class BaseActivity<T extends BaseViewModel> extends AppCompatAct
         broadcastReceiverList.put(broadcastTag, broadcastReceiver);
         registerReceiver(broadcastReceiver, intentFilter);
     }
-    public void unregisterBroadcast(String broadcastTag){
-        if(broadcastReceiverList == null){
+
+    public void unregisterBroadcast(String broadcastTag) {
+        if (broadcastReceiverList == null) {
             return;
         }
-        if(broadcastReceiverList.get(broadcastTag) != null){
+        if (broadcastReceiverList.get(broadcastTag) != null) {
             unregisterReceiver(broadcastReceiverList.get(broadcastTag));
             broadcastReceiverList.remove(broadcastTag);
         }
@@ -103,7 +114,7 @@ public abstract class BaseActivity<T extends BaseViewModel> extends AppCompatAct
 
     protected void showMessageDialog(String title, String message, String positive, String negative, String neutral) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        if(!TextUtils.isEmpty(positive)){
+        if (!TextUtils.isEmpty(positive)) {
             builder.setPositiveButton(positive, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
@@ -111,7 +122,7 @@ public abstract class BaseActivity<T extends BaseViewModel> extends AppCompatAct
                 }
             });
         }
-        if(!TextUtils.isEmpty(negative)){
+        if (!TextUtils.isEmpty(negative)) {
             builder.setNegativeButton(negative, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
@@ -119,7 +130,7 @@ public abstract class BaseActivity<T extends BaseViewModel> extends AppCompatAct
                 }
             });
         }
-        if(!TextUtils.isEmpty(neutral)){
+        if (!TextUtils.isEmpty(neutral)) {
             builder.setNeutralButton(neutral, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
@@ -153,11 +164,6 @@ public abstract class BaseActivity<T extends BaseViewModel> extends AppCompatAct
         super.onPause();
     }
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        baseViewModel = initViewModel();
-    }
 
     protected abstract T initViewModel();
 
@@ -176,8 +182,8 @@ public abstract class BaseActivity<T extends BaseViewModel> extends AppCompatAct
             alertDialog.cancel();
             alertDialog = null;
         }
-        if(broadcastReceiverList != null){
-            for(Map.Entry<String, BroadcastReceiver> entry : broadcastReceiverList.entrySet()) {
+        if (broadcastReceiverList != null) {
+            for (Map.Entry<String, BroadcastReceiver> entry : broadcastReceiverList.entrySet()) {
                 unregisterReceiver(entry.getValue());
             }
             broadcastReceiverList.clear();
@@ -213,5 +219,7 @@ public abstract class BaseActivity<T extends BaseViewModel> extends AppCompatAct
     protected abstract void initUI();
 
     protected abstract void initData();
+
+    protected abstract int getLayout();
 
 }

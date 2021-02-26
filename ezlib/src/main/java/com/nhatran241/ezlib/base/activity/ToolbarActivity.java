@@ -15,17 +15,7 @@ import com.nhatran241.ezlib.helper.ResourceHelper;
 import java.util.Objects;
 
 public abstract class ToolbarActivity<T extends BaseViewModel> extends BaseActivity<T> {
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(getLayout());
-        initUI();
-        initData();
-    }
 
-    @Override
-    protected void initData() {
-    }
 
     @Override
     protected void initUI(){
@@ -64,6 +54,7 @@ public abstract class ToolbarActivity<T extends BaseViewModel> extends BaseActiv
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(Color.TRANSPARENT);
+
         }
     }
 
@@ -81,5 +72,4 @@ public abstract class ToolbarActivity<T extends BaseViewModel> extends BaseActiv
 
     protected abstract int getToolbarId();
 
-    protected abstract int getLayout();
 }
