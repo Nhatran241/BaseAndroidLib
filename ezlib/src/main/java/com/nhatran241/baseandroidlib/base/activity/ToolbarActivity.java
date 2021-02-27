@@ -1,16 +1,14 @@
-package com.nhatran241.ezlib.base.activity;
+package com.nhatran241.baseandroidlib.base.activity;
 
 import android.graphics.Color;
 import android.os.Build;
-import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 
-import com.nhatran241.ezlib.base.BaseViewModel;
-import com.nhatran241.ezlib.helper.ResourceHelper;
+import com.nhatran241.baseandroidlib.base.BaseViewModel;
+import com.nhatran241.baseandroidlib.helper.ResourceHelper;
 
 import java.util.Objects;
 

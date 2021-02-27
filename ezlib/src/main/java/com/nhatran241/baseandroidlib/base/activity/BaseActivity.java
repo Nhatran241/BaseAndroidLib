@@ -1,4 +1,4 @@
-package com.nhatran241.ezlib.base.activity;
+package com.nhatran241.baseandroidlib.base.activity;
 
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
@@ -17,9 +17,9 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ShareCompat;
 
-import com.nhatran241.ezlib.base.BaseViewModel;
-import com.nhatran241.ezlib.base.fragment.BaseFragment;
-import com.nhatran241.ezlib.custom.dialog.LoadingDialog;
+import com.nhatran241.baseandroidlib.base.BaseViewModel;
+import com.nhatran241.baseandroidlib.base.fragment.BaseFragment;
+import com.nhatran241.baseandroidlib.custom.dialog.LoadingDialog;
 
 import java.util.HashMap;
 import java.util.Map;

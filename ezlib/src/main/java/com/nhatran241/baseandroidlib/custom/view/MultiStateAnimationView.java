@@ -1,4 +1,4 @@
-package com.nhatran241.ezlib.custom.view;
+package com.nhatran241.baseandroidlib.custom.view;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -18,8 +18,8 @@ import com.airbnb.lottie.LottieComposition;
 import com.airbnb.lottie.LottieCompositionFactory;
 import com.airbnb.lottie.LottieDrawable;
 import com.airbnb.lottie.LottieListener;
-import com.nhatran241.ezlib.R;
-import com.nhatran241.ezlib.helper.ResourceHelper;
+import com.nhatran241.baseandroidlib.R;
+import com.nhatran241.baseandroidlib.helper.ResourceHelper;
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 

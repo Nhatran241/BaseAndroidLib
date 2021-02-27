@@ -1,4 +1,4 @@
-package com.nhatran241.ezlib.custom.dialog;
+package com.nhatran241.baseandroidlib.custom.dialog;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 
 
-import com.nhatran241.ezlib.R;
+import com.nhatran241.baseandroidlib.R;
 
 import java.util.Objects;
 

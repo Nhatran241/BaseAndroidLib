@@ -1,9 +1,9 @@
-package com.nhatran241.ezlib.base.activity;
+package com.nhatran241.baseandroidlib.base.activity;
 
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
-import com.nhatran241.ezlib.base.BaseViewModel;
+import com.nhatran241.baseandroidlib.base.BaseViewModel;
 
 public abstract class DrawerActivity<T extends BaseViewModel> extends ToolbarActivity<T> {
     private DrawerLayout vDrawerLayout;
@@ -46,7 +46,7 @@ public abstract class DrawerActivity<T extends BaseViewModel> extends ToolbarAct
 
     public void closeDrawer() {
         if (vDrawerLayout != null) {
-            vDrawerLayout.closeDrawer(GravityCompat.END);
+            vDrawerLayout.closeDrawer(GravityCompat.START);
         }
     }
 

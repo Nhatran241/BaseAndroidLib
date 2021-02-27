@@ -1,4 +1,4 @@
-package com.nhatran241.ezlib.helper;
+package com.nhatran241.baseandroidlib.helper;
 
 import android.content.Context;
 import android.content.res.Resources.NotFoundException;

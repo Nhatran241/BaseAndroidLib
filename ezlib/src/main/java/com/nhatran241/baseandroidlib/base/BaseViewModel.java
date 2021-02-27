@@ -1,4 +1,4 @@
-package com.nhatran241.ezlib.base;
+package com.nhatran241.baseandroidlib.base;
 
 import java.lang.ref.WeakReference;
 

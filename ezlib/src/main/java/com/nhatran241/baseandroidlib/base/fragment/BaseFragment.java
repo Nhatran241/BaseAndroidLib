@@ -1,11 +1,11 @@
-package com.nhatran241.ezlib.base.fragment;
+package com.nhatran241.baseandroidlib.base.fragment;
 
 import android.content.Context;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.nhatran241.ezlib.base.BaseViewModel;
+import com.nhatran241.baseandroidlib.base.BaseViewModel;
 
 public abstract class BaseFragment<T extends BaseViewModel> extends Fragment {
     private T baseViewModel;
