@@ -1,52 +1,50 @@
 package com.nhatran241.ezlib.base.activity;
 
-import android.view.MenuItem;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import com.google.android.material.navigation.NavigationView;
 import com.nhatran241.ezlib.base.BaseViewModel;
 
 public abstract class DrawerActivity<T extends BaseViewModel> extends ToolbarActivity<T> {
     private DrawerLayout vDrawerLayout;
-    private boolean isSetAutoCloseDrawerLayoutOnClick;
+    private NavigationView vNavigationView;
+
     @Override
     protected void initUI() {
         super.initUI();
         initDrawerLayout();
     }
 
-    public void setSetAutoCloseDrawerLayoutOnClick(boolean isSetAutoCloseDrawerLayoutOnClick){
-        this.isSetAutoCloseDrawerLayoutOnClick = isSetAutoCloseDrawerLayoutOnClick;
-    }
-
     private void initDrawerLayout() {
-        int drawerLayoutId = getDrawerLayout();
-        if(drawerLayoutId != 0){
-            try {
+        try {
+            int drawerLayoutId = getDrawerLayoutId();
+            if (drawerLayoutId != 0) {
                 vDrawerLayout = findViewById(drawerLayoutId);
-            }catch (Exception e){
-                toast(e.getMessage());
             }
+            int navigationViewId = getNavigationViewId();
+            if (navigationViewId != 0) {
+                vNavigationView = findViewById(navigationViewId);
+                vNavigationView.setNavigationItemSelectedListener(menuItem -> {
+                    onOptionsItemSelected(menuItem);
+                    return false;
+                });
+            }
+        } catch (Exception e) {
+            toast(e.getMessage());
         }
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if(isSetAutoCloseDrawerLayoutOnClick){
-            hideNavigationDrawer();
-        }
-        return super.onOptionsItemSelected(item);
-    }
+    protected abstract int getNavigationViewId();
 
-    protected abstract int getDrawerLayout();
+    protected abstract int getDrawerLayoutId();
 
-
-    public void showNavigationDrawer() {
+    public void openDrawer() {
         if (vDrawerLayout != null) {
             vDrawerLayout.openDrawer(GravityCompat.START);
         }
     }
 
-    public void hideNavigationDrawer() {
+    public void closeDrawer() {
         if (vDrawerLayout != null) {
             vDrawerLayout.closeDrawer(GravityCompat.END);
         }
