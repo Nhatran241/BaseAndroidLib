@@ -1,10 +1,12 @@
 package com.nhatran241.ezlib.base.activity;
 
+import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -13,6 +15,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ShareCompat;
 
 import com.nhatran241.ezlib.base.BaseViewModel;
 import com.nhatran241.ezlib.base.fragment.BaseFragment;
@@ -147,15 +150,15 @@ public abstract class BaseActivity<T extends BaseViewModel> extends AppCompatAct
         }
     }
 
-    protected void onMessageDialogNegativeClick(String title) {
+    public void onMessageDialogNegativeClick(String title) {
 
     }
 
-    protected void onMessageDialogPositiveClick(String title) {
+    public void onMessageDialogPositiveClick(String title) {
 
     }
 
-    protected void onMessageDialogNeutralClick(String title) {
+    public void onMessageDialogNeutralClick(String title) {
 
     }
 
@@ -214,6 +217,27 @@ public abstract class BaseActivity<T extends BaseViewModel> extends AppCompatAct
         } else {
             super.onBackPressed();
         }
+    }
+
+    public void rateApp(){
+        Uri uri = Uri.parse("market://details?id=" +getPackageName());
+        Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
+        goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
+                Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET |
+                Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+        try {
+            startActivity(goToMarket);
+        } catch (ActivityNotFoundException e) {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" + getPackageName())));
+        }
+    }
+
+    public void shareApp(){
+        ShareCompat.IntentBuilder.from(this)
+                .setType("text/plain")
+                .setChooserTitle("Share App")
+                .setText("http://play.google.com/store/apps/details?id=" + getPackageName())
+                .startChooser();
     }
 
     protected abstract void initUI();
