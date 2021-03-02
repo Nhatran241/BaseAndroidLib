@@ -1,3 +1,3 @@
-include ':ezlib'
+include ':baseandroidlib'
 include ':app'
-rootProject.name = "EzSample"
+rootProject.name = "BaseAndroidLib"
