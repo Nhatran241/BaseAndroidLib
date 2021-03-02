@@ -204,24 +204,23 @@ public class MultiStateAnimationView extends CardView {
             }
         }
     }
-    public void stopAnimation(){
+    public void cancelAnimtion(){
         switch (STATUS_CURRENT){
             case STATUS_READY : {
                 if(readyDrawable != null) {
-                    readyDrawable.stopAnimation();
-                    readyDrawable.pauseAnimation();
+                    readyDrawable.cancelAnimation();
                 }
                 break;
             }
             case STATUS_LOADING : {
                 if(loadingDrawable != null) {
-                    loadingDrawable.stopAnimation();
+                    loadingDrawable.cancelAnimation();
                 }
                 break;
             }
             case STATUS_LOADED : {
                 if(loadedDrawable != null) {
-                    loadedDrawable.stopAnimation();
+                    loadedDrawable.cancelAnimation();
                 }
                 break;
             }
@@ -239,9 +238,9 @@ public class MultiStateAnimationView extends CardView {
         }
     }
     public void addLoadingAnimatorListener(Animator.AnimatorListener animatorListener){
-       if(loadingDrawable != null){
-           loadingDrawable.addAnimatorListener(animatorListener);
-       }
+        if(loadingDrawable != null){
+            loadingDrawable.addAnimatorListener(animatorListener);
+        }
 
     }
     public void movePreviousState(){
@@ -273,10 +272,10 @@ public class MultiStateAnimationView extends CardView {
                     break;
                 }
                 if(loadingDrawable != null) {
-                    loadingDrawable.stopAnimation();
+                    loadingDrawable.cancelAnimation();
                 }
                 if(loadedDrawable != null){
-                    loadedDrawable.stopAnimation();
+                    loadedDrawable.cancelAnimation();
                 }
                 if(readyAutoPlay) {
                     readyDrawable.startAnimation();
@@ -293,10 +292,10 @@ public class MultiStateAnimationView extends CardView {
                     break;
                 }
                 if(readyDrawable != null) {
-                    readyDrawable.stopAnimation();
+                    readyDrawable.cancelAnimation();
                 }
                 if(loadedDrawable != null){
-                    loadedDrawable.stopAnimation();
+                    loadedDrawable.cancelAnimation();
                 }
                 if(loadingAutoPlay) {
                     loadingDrawable.startAnimation();
@@ -313,10 +312,10 @@ public class MultiStateAnimationView extends CardView {
                     break;
                 }
                 if(loadingDrawable != null) {
-                    loadingDrawable.stopAnimation();
+                    loadingDrawable.cancelAnimation();
                 }
                 if(readyDrawable != null){
-                    readyDrawable.stopAnimation();
+                    readyDrawable.cancelAnimation();
                 }
                 if(loadedAutoPlay) {
                     loadedDrawable.startAnimation();
@@ -332,27 +331,14 @@ public class MultiStateAnimationView extends CardView {
     @Override
     protected void onVisibilityChanged(@NonNull View changedView, int visibility) {
         super.onVisibilityChanged(changedView, visibility);
-        if (visibility == View.VISIBLE){
-            switch (STATUS_CURRENT){
-                case STATUS_READY : readyDrawable.resumeAnimation();break;
-                case STATUS_LOADING : loadingDrawable.resumeAnimation();break;
-                case STATUS_LOADED : loadedDrawable.resumeAnimation();break;
-            }
-        }else {
-            switch (STATUS_CURRENT){
-                case STATUS_READY : readyDrawable.pauseAnimation();break;
-                case STATUS_LOADING : loadingDrawable.pauseAnimation();break;
-                case STATUS_LOADED : loadedDrawable.pauseAnimation();break;
-            }
-        }
     }
     public void moveNextState(){
-       if(STATUS_CURRENT == STATUS_LOADED){
-           STATUS_CURRENT = STATUS_READY;
-       }else {
-           STATUS_CURRENT++;
-       }
-       setImage();
+        if(STATUS_CURRENT == STATUS_LOADED){
+            STATUS_CURRENT = STATUS_READY;
+        }else {
+            STATUS_CURRENT++;
+        }
+        setImage();
     }
     private void setBackgroundResource(final CustomDrawable drawable, boolean shadow) {
         if (drawable == null)
@@ -392,9 +378,9 @@ public class MultiStateAnimationView extends CardView {
         public boolean isLottie() {
             return lottieDrawable != null && normalDrawable == null;
         }
-        public void stopAnimation(){
+        public void cancelAnimation(){
             if(lottieDrawable != null){
-                lottieDrawable.stop();
+                lottieDrawable.cancelAnimation();
             }
         }
         public void setAnimationLoop(boolean loop){
