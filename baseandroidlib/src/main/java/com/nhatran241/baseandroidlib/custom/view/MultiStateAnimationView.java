@@ -204,23 +204,24 @@ public class MultiStateAnimationView extends CardView {
             }
         }
     }
-    public void clearAnimation(){
+    public void stopAnimation(){
         switch (STATUS_CURRENT){
             case STATUS_READY : {
                 if(readyDrawable != null) {
-                    readyDrawable.clearAnimation();
+                    readyDrawable.stopAnimation();
+                    readyDrawable.pauseAnimation();
                 }
                 break;
             }
             case STATUS_LOADING : {
                 if(loadingDrawable != null) {
-                    loadingDrawable.clearAnimation();
+                    loadingDrawable.stopAnimation();
                 }
                 break;
             }
             case STATUS_LOADED : {
                 if(loadedDrawable != null) {
-                    loadedDrawable.clearAnimation();
+                    loadedDrawable.stopAnimation();
                 }
                 break;
             }
@@ -272,10 +273,10 @@ public class MultiStateAnimationView extends CardView {
                     break;
                 }
                 if(loadingDrawable != null) {
-                    loadingDrawable.clearAnimation();
+                    loadingDrawable.stopAnimation();
                 }
                 if(loadedDrawable != null){
-                    loadedDrawable.clearAnimation();
+                    loadedDrawable.stopAnimation();
                 }
                 if(readyAutoPlay) {
                     readyDrawable.startAnimation();
@@ -292,10 +293,10 @@ public class MultiStateAnimationView extends CardView {
                     break;
                 }
                 if(readyDrawable != null) {
-                    readyDrawable.clearAnimation();
+                    readyDrawable.stopAnimation();
                 }
                 if(loadedDrawable != null){
-                    loadedDrawable.clearAnimation();
+                    loadedDrawable.stopAnimation();
                 }
                 if(loadingAutoPlay) {
                     loadingDrawable.startAnimation();
@@ -312,10 +313,10 @@ public class MultiStateAnimationView extends CardView {
                     break;
                 }
                 if(loadingDrawable != null) {
-                    loadingDrawable.clearAnimation();
+                    loadingDrawable.stopAnimation();
                 }
                 if(readyDrawable != null){
-                    readyDrawable.clearAnimation();
+                    readyDrawable.stopAnimation();
                 }
                 if(loadedAutoPlay) {
                     loadedDrawable.startAnimation();
@@ -391,9 +392,9 @@ public class MultiStateAnimationView extends CardView {
         public boolean isLottie() {
             return lottieDrawable != null && normalDrawable == null;
         }
-        public void clearAnimation(){
+        public void stopAnimation(){
             if(lottieDrawable != null){
-                lottieDrawable.cancelAnimation();
+                lottieDrawable.stop();
             }
         }
         public void setAnimationLoop(boolean loop){
