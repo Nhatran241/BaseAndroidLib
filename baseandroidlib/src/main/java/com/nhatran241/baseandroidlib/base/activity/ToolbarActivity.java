@@ -28,6 +28,11 @@ public abstract class ToolbarActivity<T extends BaseViewModel> extends BaseActiv
         }
     }
 
+    @Override
+    protected void initData() {
+
+    }
+
     protected void initToolbar(int toolbarId) {
         try {
             Toolbar toolbar = findViewById(toolbarId);
